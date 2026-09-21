@@ -70,7 +70,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp", policy =>
     {
-        policy.WithOrigins("http://localhost:4200", "https://resplendent-gaufre-7520fb.netlify.app")
+        policy.WithOrigins("http://localhost:4200", "https://bokapp-celina.netlify.app")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
