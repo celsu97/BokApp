@@ -38,6 +38,19 @@ public class AuthController : ControllerBase
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
+        // Lägg till 5 startcitat åt den nya användaren
+        var defaultQuotes = new List<Quote>
+        {
+            new Quote { Text = "Vara eller icke vara, det är frågan.", Author = "William Shakespeare", UserId = user.Id },
+            new Quote { Text = "Jag tänker, alltså finns jag.", Author = "René Descartes", UserId = user.Id },
+            new Quote { Text = "Det enda jag vet är att jag ingenting vet.", Author = "Sokrates", UserId = user.Id },
+            new Quote { Text = "Var den förändring du vill se i världen.", Author = "Mahatma Gandhi", UserId = user.Id },
+            new Quote { Text = "Livet är vad som händer medan du är upptagen med att göra andra planer.", Author = "John Lennon", UserId = user.Id }
+        };
+
+        _context.Quotes.AddRange(defaultQuotes);
+        await _context.SaveChangesAsync();
+
         return Ok(new { message = "User registered successfully." });
     }
 
