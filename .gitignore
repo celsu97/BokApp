@@ -1,0 +1,18 @@
+# .NET
+bin/
+obj/
+*.db
+*.db-shm
+*.db-wal
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+
+# IDE
+.idea/
+.vs/
+
+# OS
+.DS_Store

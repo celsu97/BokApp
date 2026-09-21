@@ -1,0 +1,61 @@
+<div class="container mt-4" style="max-width: 700px;">
+  <h2 class="mb-4"><i class="fa-solid fa-quote-left"></i> Mina citat</h2>
+
+  <!-- Lägg till nytt citat -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Lägg till nytt citat</h5>
+      <div class="mb-2">
+        <textarea class="form-control" rows="2" placeholder="Citattext..."
+                  [(ngModel)]="newQuote.text" name="newText"></textarea>
+      </div>
+      <div class="mb-2">
+        <input type="text" class="form-control" placeholder="Författare (valfritt)"
+               [(ngModel)]="newQuote.author" name="newAuthor">
+      </div>
+      <button class="btn btn-primary" (click)="addQuote()">
+        <i class="fa-solid fa-plus"></i> Lägg till
+      </button>
+    </div>
+  </div>
+
+  <div class="alert alert-info" *ngIf="quotes.length === 0">
+    Inga citat tillagda än.
+  </div>
+
+  <!-- Citatlista -->
+  <div class="card mb-3" *ngFor="let quote of quotes">
+    <div class="card-body" *ngIf="editingId !== quote.id">
+      <blockquote class="mb-2">
+        <i class="fa-solid fa-quote-left text-muted"></i> {{ quote.text }}
+      </blockquote>
+      <p class="text-muted mb-2" *ngIf="quote.author">— {{ quote.author }}</p>
+      <div class="d-flex gap-2">
+        <button class="btn btn-sm btn-outline-secondary" (click)="startEdit(quote)">
+          <i class="fa-solid fa-pen"></i> Redigera
+        </button>
+        <button class="btn btn-sm btn-outline-danger" (click)="deleteQuote(quote.id!)">
+          <i class="fa-solid fa-trash"></i> Radera
+        </button>
+      </div>
+    </div>
+
+    <!-- Redigeringsläge -->
+    <div class="card-body" *ngIf="editingId === quote.id">
+      <div class="mb-2">
+        <textarea class="form-control" rows="2" [(ngModel)]="editBuffer.text" name="editText"></textarea>
+      </div>
+      <div class="mb-2">
+        <input type="text" class="form-control" [(ngModel)]="editBuffer.author" name="editAuthor">
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-sm btn-success" (click)="saveEdit(quote.id!)">
+          <i class="fa-solid fa-check"></i> Spara
+        </button>
+        <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">
+          Avbryt
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

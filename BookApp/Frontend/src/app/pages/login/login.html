@@ -1,0 +1,21 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h2 class="mb-4"><i class="fa-solid fa-right-to-bracket"></i> Logga in</h2>
+
+  <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Användarnamn</label>
+      <input type="text" class="form-control" name="username" [(ngModel)]="credentials.username" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Lösenord</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="credentials.password" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Logga in</button>
+  </form>
+
+  <p class="mt-3 text-center">
+    Inget konto? <a routerLink="/register">Registrera dig här</a>
+  </p>
+</div>
