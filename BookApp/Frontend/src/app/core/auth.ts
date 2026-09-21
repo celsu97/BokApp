@@ -7,7 +7,7 @@ import { LoginRequest, RegisterRequest, AuthResponse } from '../models/user.mode
   providedIn: 'root',
 })
 export class Auth {
-  private apiUrl = 'http://localhost:5294/api/auth';
+  private apiUrl = 'https://bokapp.onrender.com/api/auth';
   private tokenKey = 'auth_token';
   private usernameKey = 'auth_username';
 

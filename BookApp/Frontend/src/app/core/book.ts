@@ -7,7 +7,7 @@ import { Book } from '../models/book.model';
   providedIn: 'root',
 })
 export class BookService {
-  private apiUrl = 'http://localhost:5294/api/books';
+  private apiUrl = 'https://bokapp.onrender.com/api/books';
 
   constructor(private http: HttpClient) {}
 

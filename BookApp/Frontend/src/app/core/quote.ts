@@ -7,7 +7,7 @@ import { Quote } from '../models/quote.model';
   providedIn: 'root',
 })
 export class QuoteService {
-  private apiUrl = 'http://localhost:5294/api/quotes';
+  private apiUrl = 'https://bokapp.onrender.com/api/quotes';
 
   constructor(private http: HttpClient) {}
 
